@@ -28,7 +28,7 @@ public class PeliculasAc extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         tvBienvendido = findViewById(R.id.tvBienvenido);
-        String bienvenido = getIntent().getStringExtra("nombre");
+        String bienvenido = getIntent().getStringExtra("usuarionom");
         tvBienvendido.setText("Bienvenid@ " + bienvenido);
         tvBienvendido.setTextColor(Color.parseColor("#FF3700B3"));
         tvBienvendido.setTextSize(19);

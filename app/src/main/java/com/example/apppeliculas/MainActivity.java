@@ -10,6 +10,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
     TextView tvRegistrarse;
     TextInputEditText tieUsuario, tiePassword;
     Button btnLogin;
+    ProgressBar pB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity{
         tieUsuario = findViewById(R.id.tieUsuario);
         tiePassword = findViewById(R.id.tiePassword);
         btnLogin = findViewById(R.id.btnLogin);
+
 
         String text = "Registrarse";
 
@@ -81,16 +84,28 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(MainActivity.this, "Rellene todos los campos", Toast.LENGTH_SHORT).show();
         }else{
             db.collection("usuarios")
+                    .whereEqualTo("usuarionom", tieUsuarioS)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
+                                String passwordbd = "";
+                                int count = 0;
                                 for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("TAG3", document.getId() + " => " + document.getData());
+                                    passwordbd = document.get("password").toString();
+                                    count++;
+                                }
+                                if (count != 0 ){
+                                    if(tiePasswordS.equals(passwordbd)){
+                                        Intent intent = new Intent(MainActivity.this, PeliculasAc.class).putExtra("usuarionom", tieUsuarioS);
+                                        startActivity(intent);
+                                    }else{
+                                        Toast.makeText(MainActivity.this, "Error de contraseña y/o usuario", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             } else {
-                                Log.w("TAG4", "Error getting documents.", task.getException());
+                                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

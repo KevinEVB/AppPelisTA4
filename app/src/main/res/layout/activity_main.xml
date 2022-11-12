@@ -44,7 +44,7 @@
         app:boxBackgroundMode="outline"
         app:counterEnabled="false"
         app:counterMaxLength="10"
-        app:endIconMode="clear_text"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

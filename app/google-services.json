@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1097738741981",
+    "project_id": "apppperufire",
+    "storage_bucket": "apppperufire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097738741981:android:b5ca9c1935c5f100d11334",
+        "android_client_info": {
+          "package_name": "com.example.apppeliculas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097738741981-lnrpifrgfp0carq1fo6fq1aeh5bcqtbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM2iEtyKM7eclDIfQdOm9p_5kM_Pc7p2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097738741981-lnrpifrgfp0carq1fo6fq1aeh5bcqtbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

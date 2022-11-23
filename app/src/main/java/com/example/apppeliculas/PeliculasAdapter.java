@@ -12,10 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.ViewHolder> {
     List<Peliculas> datos;
+    ArrayList<Peliculas> listadatos;
+    ArrayList<Peliculas> listadatosO;
     LayoutInflater layoutInflater;
     Context context;
 
@@ -23,6 +29,9 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.View
         this.datos = datos;
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
+        listadatos =new ArrayList<>(datos);
+        listadatosO = new ArrayList<>();
+        listadatosO.addAll(listadatos);
     }
 
     @NonNull
@@ -35,6 +44,19 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.juntarData(datos.get(position), context);
+    }
+
+    public void filtrar(String svBuscar){
+        int longitud = svBuscar.length();
+        if(longitud == 0){
+            listadatos.clear();
+            listadatos.addAll(listadatosO);
+        }else{
+            List<Peliculas> coleccion = listadatos.stream()
+                    .filter(i -> i.getPeliculanom().toLowerCase().contains(svBuscar.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        notifyDataSetChanged();
     }
 
     @Override

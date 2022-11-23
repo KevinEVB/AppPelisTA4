@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.1995" />
         <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
-        <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/layout/activity_peliculas.xml" value="0.14444444444444443" />
+        <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/layout/activity_peliculas.xml" value="0.4365361803084223" />
         <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/layout/activity_registro.xml" value="0.19166666666666668" />
+        <entry key="..\:/Imagenesparaproyecto/AppPeliculas2/app/src/main/res/layout/contenido.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>

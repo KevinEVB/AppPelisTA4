@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeliculasAc extends AppCompatActivity {
+public class PeliculasAc extends AppCompatActivity implements SearchView.OnQueryTextListener {
     TextView tvBienvendido;
+    SearchView svBuscar;
+    PeliculasAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class PeliculasAc extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         tvBienvendido = findViewById(R.id.tvBienvenido);
+        svBuscar = findViewById(R.id.svBuscar);
         String bienvenido = getIntent().getStringExtra("usuarionom");
         tvBienvendido.setText("Bienvenid@ " + bienvenido);
         tvBienvendido.setTextColor(Color.parseColor("#FF3700B3"));
@@ -40,11 +44,14 @@ public class PeliculasAc extends AppCompatActivity {
         peliculas.add(new Peliculas("Marinera norteña", "40m", "APT", R.drawable.marinera));
         peliculas.add(new Peliculas("Negritos de Huánuco", "1h 10m", "+APT", R.drawable.negritos));
 
-        PeliculasAdapter adapter = new PeliculasAdapter(peliculas, this);
+        adapter = new PeliculasAdapter(peliculas, this);
         RecyclerView recyclerView = findViewById(R.id.rvPeliAc);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
+
+        svBuscar.setOnQueryTextListener(this);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,5 +69,16 @@ public class PeliculasAc extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        adapter.filtrar(s);
+        return false;
     }
 }
